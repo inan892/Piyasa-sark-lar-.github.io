@@ -54,9 +54,13 @@ body {
     color: #ccc;
   }
   
+  /* SLİDER */
   .slider {
     display: flex;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition: transform 0.5s ease;
+    overflow-x: scroll;  /* Yatay kaydırma eklemek için */
+    scroll-snap-type: x mandatory; /* Kaydırma pozisyonlarını sabitlemek için */
+    -webkit-overflow-scrolling: touch; /* Mobil cihazlar için düzgün kaydırma */
   }
   
   .slide {
@@ -65,6 +69,7 @@ body {
     opacity: 0.5;
     transform: scale(0.95);
     transition: all 0.5s ease;
+    scroll-snap-align: start; /* Her slide'ın başlangıcında sabit durması */
   }
   
   .slide.active {
@@ -110,5 +115,4 @@ body {
   .nav-button:hover {
     background: rgba(255, 255, 255, 0.5);
   }
-  
   
