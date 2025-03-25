@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Şarkılarımız</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Arka Plan -->
+  <div class="background">
+    <canvas id="starCanvas"></canvas>
+  </div>
+
+  <!-- İçerik -->
+  <div class="container">
+    <div class="header">
+      <h1>🎶 Şarkılarımız 🎶</h1>
+      <p>Arkadaşlarımızla ürettiğimiz şarkıları keşfet!</p>
+    </div>
+
+    <div class="slider">
+      <!-- Şarkı 1 -->
+      <section class="slide active">
+        <h2>✨ Şarkı 1: Piyasa</h2>
+        <p>Bu şarkı modern dünyayı anlatıyor. Farklı bir ritimle dinleyicilerle buluşuyor.</p>
+        <button onclick="window.open('https://www.youtube.com/watch?si=dMBLz3_J6qvfozy_&v=7OLk1UL3T54&feature=youtu.be&themeRefresh=1', '_blank')">YouTube'da Dinle</button>
+        <br>
+        <p>Made By İnan</p>
+      </section>
+      
+      <!-- Şarkı 2 (Henüz Hazır Değil) -->
+      <section class="slide">
+        <h2>🌌 Şarkı 2</h2>
+        <p>Henüz yapılmadı, yakında burada olacak!</p>
+      </section>
+
+      <!-- Şarkı 3 (Henüz Hazır Değil) -->
+      <section class="slide">
+        <h2>🌟 Şarkı 3</h2>
+        <p>Henüz yapılmadı, yakında burada olacak!</p>
+      </section>
+    </div>
+
+    <!-- Navigasyon Butonları -->
+    <div class="navigation">
+      <button class="nav-button left" onclick="prevSlide()">&#8249;</button>
+      <button class="nav-button right" onclick="nextSlide()">&#8250;</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
