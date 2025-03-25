@@ -1,6 +1,8 @@
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');  // Slide'ları seçiyoruz
 const totalSlides = slides.length;
+let startX = 0;
+let endX = 0;
 
 // Güncel slide'ı göstermek için fonksiyon
 function updateSlider() {
@@ -26,6 +28,51 @@ function prevSlide() {
 
 // İlk güncelleme işlemi
 updateSlider();
+
+// Kaydırma hareketlerini dinlemek için event listener ekliyoruz
+const slider = document.querySelector('.slider');
+
+// Mouse veya touch hareketlerini kontrol etmek için
+slider.addEventListener('mousedown', (e) => {
+  startX = e.clientX;
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (startX !== 0) {
+    endX = e.clientX;
+  }
+});
+
+slider.addEventListener('mouseup', () => {
+  if (startX > endX) {
+    nextSlide();  // Sağdan sola kaydırma, sonraki slide'a geçiş
+  } else if (startX < endX) {
+    prevSlide();  // Sola sağa kaydırma, önceki slide'a geçiş
+  }
+  startX = 0;  // Başlangıç pozisyonunu sıfırla
+  endX = 0;    // Bitiş pozisyonunu sıfırla
+});
+
+// Mobil cihazlar için dokunmatik kaydırma
+slider.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener('touchmove', (e) => {
+  if (startX !== 0) {
+    endX = e.touches[0].clientX;
+  }
+});
+
+slider.addEventListener('touchend', () => {
+  if (startX > endX) {
+    nextSlide();  // Sağdan sola kaydırma, sonraki slide'a geçiş
+  } else if (startX < endX) {
+    prevSlide();  // Sola sağa kaydırma, önceki slide'a geçiş
+  }
+  startX = 0;  // Başlangıç pozisyonunu sıfırla
+  endX = 0;    // Bitiş pozisyonunu sıfırla
+});
 
 // Yıldız animasyonu
 const canvas = document.getElementById('starCanvas');
