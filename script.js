@@ -117,3 +117,54 @@ function animate() {
 }
 
 animate();
+
+
+
+
+
+// Sayfa açıldığında bir modal göster
+window.onload = function () {
+  // Modal oluştur
+  const modal = document.createElement("div");
+  modal.style.position = "fixed";
+  modal.style.top = "50%";
+  modal.style.left = "50%";
+  modal.style.transform = "translate(-50%, -50%)";
+  modal.style.padding = "20px";
+  modal.style.backgroundColor = "white"; // Beyaz arkaplan
+  modal.style.color = "black"; // Siyah yazı
+  modal.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
+  modal.style.borderRadius = "10px";
+  modal.style.textAlign = "center";
+  modal.style.zIndex = "1000";
+
+  // Modal içeriği
+  modal.innerHTML = `
+    <p>Şarkılar arası gezmek için kaydırın.</p>
+    <button id="closeModal" style="padding: 10px 20px; margin-top: 10px; background-color: white; color: black; border: none; border-radius: 5px;">Kapat</button>
+  `;
+
+  // Modalı ekrana ekle
+  document.body.appendChild(modal);
+
+  // Modal kapatma
+  document.getElementById("closeModal").addEventListener("click", function () {
+    modal.remove();
+  });
+
+  // Arkaplan karartma (isteğe bağlı)
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  overlay.style.zIndex = "999";
+  document.body.appendChild(overlay);
+
+  // Kapatınca arkaplanı da kaldır
+  document.getElementById("closeModal").addEventListener("click", function () {
+    overlay.remove();
+  });
+};
